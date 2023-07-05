@@ -1,17 +1,16 @@
-import Student from './students.js';
-import Staf from './staf.js';
-import Commands from './commands.js';
-import Exercises from './exercises.js';
-import Klassen from './klassen.js';
+import album from './album.js';
+import artist from './artist.js';
+import playlist from './playlist.js';
+import song from './song.js';
+import user from './user.js';
 import Usermeta from './usermeta.js';
-import Vakken from './vakken.js';
 
 export default {
-  ...Student,
-  ...Staf,
-  ...Commands,
-  ...Exercises,
-  ...Klassen,
+  ...album,
+  ...artist,
+  ...playlist,
+  ...song,
+  ...user,
   ...Usermeta,
-  ...Vakken,
+ 
 };

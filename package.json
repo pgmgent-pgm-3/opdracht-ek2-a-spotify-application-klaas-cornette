@@ -5,19 +5,19 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/app.js --config nodemon.json",
-    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
     "seed": "node ./src/database/seeders/runSeeder.js"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/pgmgent-pgm-3/opdracht-ek2-a-spotify-application-klaas-cornette"
   },
   "keywords": [],
   "author": "Klaas Cornette",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/pgmgent-pgm-3/opdracht-ek2-a-spotify-application-klaas-cornette"
   },
   "homepage": "",
   "dependencies": {

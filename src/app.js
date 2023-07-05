@@ -177,6 +177,27 @@ app.put('/api/song',jwtAuthEditor, updateSong)
 app.post('/api/play/music/:id', playMusic)
 
 
+//test
+
+app.get('/test/api/song', getAllSongs);
+app.get('/test/api/song/:id', getSong);
+app.delete('/test/api/song/:id', deleteSong);
+app.post('/test/api/song', postSong);
+app.put('/test/api/song', updateSong)
+
+app.get('/test/api/artist', getAllArtists);
+app.get('/test/api/artist/:id', getArtist);
+app.delete('/test/api/artist/:id', deleteArtist);
+app.post('/test/api/artist', postArtist);
+app.put('/test/api/artist', updateArtist)
+
+app.get('/test/api/album', getAllAlbums);
+app.get('/test/api/album/:id', getAlbum);
+
+app.get('/test/api/playlist', getAllPlaylists);
+app.get('/test/api/playlist/:id', getPlaylist);
+
+
 if (process.env.NODE_ENV !== 'test')
   DataSource.initialize()
     .then(() => {

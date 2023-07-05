@@ -5,10 +5,10 @@ export default {
   openapi: '3.0.0',
   info: {
     version: '1.0.0',
-    title: 'Swagger OKAN Administration',
+    title: 'Swagger herexamen pgm3',
     description: 'this is an API to call HTTP methods and alter data',
     license: {
-      name: 'Sahin Cinar - Nese Yildirim - Klaas Cornette',
+      name: 'Klaas Cornette',
     },
   },
   servers: [

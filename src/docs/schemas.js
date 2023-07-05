@@ -1,127 +1,84 @@
 export default {
-  Student: {
+  User: {
     properties: {
-      id_student: { type: 'number' },
+      id: { type: 'number' },
       email: { type: 'string' },
       password: { type: 'string' },
-      avatar: { type: 'string' },
       meta: {
         $ref: '#/components/schemas/Usermeta',
       },
-      klassen: {
-        $ref: '#/components/schemas/Klassen',
+      role: {
+        $ref: '#/components/schemas/Role',
       },
-      oefeningen: {
-        $ref: '#/components/schemas/Oefeningen',
+      playlist: {
+        $ref: '#/components/schemas/Playlist',
       },
-      commands: {
-        $ref: '#/components/schemas/Commands',
+      
+    },
+  },
+  UserMeta: {
+    properties: {
+      id: { type: 'number' },
+      firstname: { type: 'string' },
+      lastname: { type: 'string' },
+      username: { type: 'string' },
+      avatar: { type: 'string' },
+      user: {
+        $ref: '#/components/schemas/User',
       },
     },
   },
-  Usermeta: {
+  Song: {
     properties: {
-      id_meta: { type: 'number' },
-      adres: { type: 'string' },
-      geboortedatum: { type: 'string' },
-      voornaam: { type: 'string' },
-      achternaam: { type: 'string' },
-      geboorteplaats: { type: 'string' },
-      student: {
-        $ref: '#/components/schemas/Student',
+      id: { type: 'number' },
+      name: { type: 'string' },
+      artist: {
+        $ref: '#/components/schemas/Artist',
       },
-      staf: {
-        $ref: '#/components/schemas/Staf',
-      },
-    },
-  },
-  Commands: {
-    properties: {
-      id_commands: { type: 'number' },
-      inhoud: { type: 'string' },
-      vakken: {
-        $ref: '#/components/schemas/Vakken',
-      },
-      student: {
-        $ref: '#/components/schemas/Student',
-      },
-    },
-  },
-  Klassen: {
-    properties: {
-      id_klassen: { type: 'number' },
-      naam: { type: 'string' },
-      student: {
-        $ref: '#/components/schemas/Student',
-      },
-      vakken: {
-        $ref: '#/components/schemas/Vakken',
-      },
-      Staf: {
-        $ref: '#/components/schemas/Staf',
-      },
-    },
-  },
-  Oefeningen: {
-    properties: {
-      id_oefeningen: { type: 'number' },
-      naam: { type: 'string' },
-      link: { type: 'string' },
-      niveau: { type: 'string' },
-      vakken: {
-        $ref: '#/components/schemas/Vakken',
-      },
-      student: {
-        $ref: '#/components/schemas/Student',
+      playlist: {
+        $ref: '#/components/schemas/Playlist',
       },
     },
   },
   Role: {
     properties: {
       id: { type: 'number' },
-      label: { type: 'string' },
-      staf: {
-        $ref: '#/components/schemas/Staf',
+      lable: { type: 'string' },
+      user: {
+        $ref: '#/components/schemas/User',
       },
     },
   },
-  Staf: {
+  Playlist: {
     properties: {
-      id_staf: { type: 'number' },
-      email: { type: 'string' },
-      password: { type: 'string' },
-      avatar: { type: 'string' },
-      role: {
-        $ref: '#/components/schemas/Role',
+      id: { type: 'number' },
+      name: { type: 'string' }, 
+      user: {
+        $ref: '#/components/schemas/User',
       },
-      meta: {
-        $ref: '#/components/schemas/Usermeta',
-      },
-      klassen: {
-        $ref: '#/components/schemas/Klassen',
-      },
-      vakken: {
-        $ref: '#/components/schemas/Vakken',
+      song: {
+        $ref: '#/components/schemas/Song',
       },
     },
   },
-  Vakken: {
+  Artist: {
     properties: {
-      id_vakken: { type: 'number' },
-      naam: { type: 'string' },
-      description: { type: 'string' },
-      abbreviation: { type: 'string' },
-      commands: {
-        $ref: '#/components/schemas/Commands',
+      id: { type: 'number' },
+      name: { type: 'string' },
+      song: {
+        $ref: '#/components/schemas/Song',
       },
-      oefeningen: {
-        $ref: '#/components/schemas/Oefeningen',
+      album: {
+        $ref: '#/components/schemas/Album',
       },
-      klassen: {
-        $ref: '#/components/schemas/Klassen',
-      },
-      staf: {
-        $ref: '#/components/schemas/Staf',
+    },
+  },
+  Album: {
+    properties: {
+      id: { type: 'number' },
+      name: { type: 'string' },
+      artist: {
+        $ref: '#/components/schemas/Artist',
       },
     },
   },

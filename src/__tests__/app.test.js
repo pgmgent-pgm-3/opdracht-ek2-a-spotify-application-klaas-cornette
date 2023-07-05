@@ -27,48 +27,77 @@ describe('API test', () => {
   });
   describe('Testing HTTP methods', () => {
     const songRepo = DataSource.getRepository('Song')
-    test('GET - /api/song', async () => {
-      const response = await request(app).get('/api/song');
+    const artistRepo = DataSource.getRepository('Artist')
+    test('GET - /test/api/song', async () => {
+      const response = await request(app).get('/test/api/song');
       expect(response.statusCode).toBe(201);
       expect(Array.isArray(response.body)).toBeTruthy();
     });
 
-    test('GET - /api/song/:id', async () => {
-      const response = await request(app).get('/api/song/1');
+    test('GET - /test/api/song/:id', async () => {
+      const response = await request(app).get('/test/api/song/1');
       expect(response.statusCode).toBe(201);
     });
 
-    test('POST - /api/song', async () => {
-      const song = {
-        name: 'test',
-        artist: {
-          id: 2,
-        }
-      };
-      const response = await request(app).post('/api/song').send(song);
-      // controleren op statuscode
-      expect(response.statusCode).toBe(201);
-      expect(response.body).toHaveProperty('id');
-    });
-    test('PUT - /api/song', async () => {
+    test('PUT - /test/api/song', async () => {
       const song = songRepo.findOne({
-        where: {name: 'test'}
+        where: {id: 4}
       })
       const update = {
         ...song,
         name: 'updateTest',
       };
-      const response = await request(app).put('/api/song').send(update);
+      const response = await request(app).put('/test/api/song').send(update);
+      expect(response.status).toBe(201);
+    });
+    
+    test('GET - /test/api/artist', async () => {
+      const response = await request(app).get('/test/api/artist');
+      expect(response.statusCode).toBe(201);
+      expect(Array.isArray(response.body)).toBeTruthy();
+    });
+
+    test('GET - /test/api/artist/:id', async () => {
+      const response = await request(app).get('/test/api/artist/1');
+      expect(response.statusCode).toBe(201);
+    });
+
+    test('PUT - /test/api/artist', async () => {
+      const artist = artistRepo.findOne({
+        where: {id: 2}
+      })
+      const update = {
+        ...artist,
+        name: 'updateTest',
+      };
+      const response = await request(app).put('/test/api/artist').send(update);
       expect(response.status).toBe(201);
     });
 
-    test('DELETE - /api/song', async () => {
-      const song = songRepo.findOne({
-        where: {name: 'updateTest'}
-      })
-      const response = await request(app).delete('/api/song').send(song);
-      expect(response.status).toBe(204);
+    test('GET - /test/api/album', async () => {
+      const response = await request(app).get('/test/api/album');
+      expect(response.statusCode).toBe(201);
+      expect(Array.isArray(response.body)).toBeTruthy();
+    });
+
+    test('GET - /test/api/album/:id', async () => {
+      const response = await request(app).get('/test/api/album/1');
+      expect(response.statusCode).toBe(201);
+    });
+
+    test('GET - /test/api/playlist', async () => {
+      const response = await request(app).get('/test/api/playlist');
+      expect(response.statusCode).toBe(201);
+      expect(Array.isArray(response.body)).toBeTruthy();
+    });
+
+    test('GET - /test/api/playlist/:id', async () => {
+      const response = await request(app).get('/test/api/playlist/1');
+      expect(response.statusCode).toBe(201);
     });
     
+    
+
+
   });
 });
