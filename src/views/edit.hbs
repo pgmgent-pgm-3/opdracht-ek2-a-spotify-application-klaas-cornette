@@ -1,0 +1,179 @@
+<body class="overzichtpage">
+    {{> header}}
+<main class="marginbox delete">
+  <div class="inline">
+      <a class="navigator" href="#searchInputSong">Go to songs search<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg></a>
+      <a class="navigator" href="#searchInputArtist">Go to artists search<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg></a>
+      <a class="navigator" href="#searchInputAlbum">Go to albums search<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg></a>
+      <a class="navigator" href="#searchInputPlaylist">Go to playlists search<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg></a>
+  </div>
+    {{#if (eq user.role.lable "admin")}}
+    <h4>Search user</h4>
+     <input class="searchdelete" type="text" name="search" id="searchInputUser" placeholder="Search...">
+     
+     <table>
+        <tr>
+            <th>Name user</th>
+            <th>Delete</th>
+        </tr> 
+        {{#each users }} 
+            <tr class="user">
+                <td><p>{{email}}</p></td>
+                <td><form action="api/user/{{id}}" method="post"><button type="submit"><img src="assets/img/delete.svg" alt="delete" onclick="return confirm('Weet je zeker dat je dit wilt verwijderen?')"></button></form></td>
+            </tr>        
+        {{/each}}
+    </table>
+    {{/if}}
+    <h4>Search song</h4>
+     <input class="searchdelete" type="text" name="search" id="searchInputSong" placeholder="Search...">
+     
+     <table>
+        <tr>
+            <th>name song</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr> 
+        {{#each songs}} 
+            <tr class="song">
+                <td><p>{{name}}</p></td>
+                <td><form action="/edit/song/{{id}}" method="get"><button type="submit"><img src="assets/img/edit.svg" alt="edit"></button></form></td>
+                <td><form action="api/song/{{id}}" method="post"><button type="submit"><img src="assets/img/delete.svg" alt="delete" onclick="return confirm('Weet je zeker dat je dit wilt verwijderen?')"></button></form></td>
+            </tr>        
+        {{/each}}
+    </table>
+
+    <h4>Search artist</h4>
+     <input class="searchdelete" type="text" name="search" id="searchInputArtist" placeholder="Search...">
+     
+     <table>
+        <tr>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr> 
+        {{#each artists}} 
+            <tr class="artist">
+                <td><p>{{name}}</p></td>
+                <td><form action="/edit/artist/{{id}}" method="get"><button type="submit"><img src="assets/img/edit.svg" alt="edit"></button></form></td>
+                <td><form action="api/artist/{{id}}" method="post"><button type="submit"><img src="assets/img/delete.svg" alt="delete" onclick="return confirm('Weet je zeker dat je dit wilt verwijderen?')"></button></form></td>
+            </tr>        
+        {{/each}}
+    </table>
+
+    <h4>Search album</h4>
+     <input class="searchdelete" type="text" name="search" id="searchInputAlbum" placeholder="Search...">
+     
+     <table>
+        <tr>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr> 
+        {{#each albums}} 
+            <tr class="album">
+                <td><p>{{name}}</p></td>
+                <td><form action="/edit/album/{{id}}" method="get"><button type="submit"><img src="assets/img/edit.svg" alt="edit"></button></form></td>
+                <td><form action="api/album/{{id}}" method="post"><button type="submit"><img src="assets/img/delete.svg" alt="delete" onclick="return confirm('Weet je zeker dat je dit wilt verwijderen?')"></button></form></td>
+            </tr>        
+        {{/each}}
+    </table>
+
+    <h4>Search playlist</h4>
+     <input class="searchdelete" type="text" name="search" id="searchInputPlaylist" placeholder="Search...">
+     
+     <table>
+        <tr>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr> 
+        {{#each playlists}} 
+            <tr class="playlist">
+                <td><p>{{name}}</p></td>
+                <td><form action="/edit/playlist/{{id}}" method="get"><button type="submit"><img src="assets/img/edit.svg" alt="edit"></button></form></td>
+                <td><form action="api/playlist/{{id}}" method="post"><button type="submit"><img src="assets/img/delete.svg" alt="delete" onclick="return confirm('Weet je zeker dat je dit wilt verwijderen?')"></button></form></td>
+            </tr>        
+        {{/each}}
+    </table>
+</main>
+<script>
+  
+  const searchInputAlbum = document.getElementById('searchInputAlbum');
+  searchInputAlbum.addEventListener('input', function() {
+    const searchQuery = searchInputAlbum.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('album');
+    console.log(searchQuery)
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+  const searchInputPlaylist = document.getElementById('searchInputPlaylist');
+  searchInputPlaylist.addEventListener('input', function() {
+    const searchQuery = searchInputPlaylist.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('playlist');
+    console.log(searchQuery)
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+  const searchInputUser = document.getElementById('searchInputUser');
+  searchInputUser.addEventListener('input', function() {
+    const searchQuery = searchInputUser.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('user');
+    console.log(searchQuery)
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+  const searchInputSong = document.getElementById('searchInputSong');
+  searchInputSong.addEventListener('input', function() {
+    const searchQuery = searchInputSong.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('song');
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+  const searchInputArtist = document.getElementById('searchInputArtist');
+  searchInputArtist.addEventListener('input', function() {
+    const searchQuery = searchInputArtist.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('artist');
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+</script>
+</body>
+
+
+
+
+
+
+
+
+

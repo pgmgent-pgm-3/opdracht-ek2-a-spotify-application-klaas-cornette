@@ -1,0 +1,65 @@
+<body class="add">
+<main>
+    {{> header}}
+
+<div class="form-container">
+
+    <form method="POST" action="/api/artist" class="make">
+        <h2>Add artist</h2>
+
+        <label for="naam_add_artist">Name artist:</label>
+        <input type="text" id="naam_add_artist" name="naam" required><br><br>
+
+        <input type="submit" value="toevoegen">
+    </form>
+
+    <form method="POST" action="/api/song" class="make">
+        <h2>Add song</h2>
+
+        <label for="naam_add_song">Name song:</label>
+        <input type="text" id="naam_add_song" name="naam" required><br><br>
+
+        <label for="naam_add_song">Name artist:</label>
+        <input type="text" id="artist_add_song" name="artist_naam" required><br><br>
+
+        <input type="submit" value="toevoegen">
+    </form>
+
+    <form method="POST" action="/api/album" class="make">
+        <h2>Add album</h2>
+
+        <label for="naam_add_song">Name album:</label>
+        <input type="text" id="naam_add_album" name="naam" required><br><br>
+
+        <label for="artist_add_album">Name artist:</label>
+        <input type="text" id="artist_add_album" name="artist_naam" required><br><br>
+
+        <input type="submit" value="toevoegen">
+    </form>
+
+    <form method="POST" action="/api/playlist" class="make">
+        <h2>Add playlist</h2>
+
+        <label for="naam_add_playlist">Name playlist:</label>
+        <input type="text" id="naam_add_playlist" name="naam" required><br><br>
+
+        <input type="submit" value="toevoegen">
+    </form>
+
+    <form method="POST" action="/api/playlists/addSong" class="make">
+        <h2>Add song to playlist</h2>
+
+        <label for="naam_add_songto">Name playlist:</label>
+        <input type="text" id="naam_add_songto" name="naam" required><br><br>
+
+        <label for="naam_add_song">Name song:</label>
+        <input type="text" id="naam_add_song" name="songnaam" required><br><br>
+
+        <input type="submit" value="toevoegen">
+    </form>
+
+</div>
+    
+</main>
+</body>
+

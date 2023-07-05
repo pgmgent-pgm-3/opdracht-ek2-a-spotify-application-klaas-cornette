@@ -1,0 +1,75 @@
+<body class="overzichtpage">
+    {{> header}}
+<main class="marginbox delete">   
+     <a class="navigator" href="#searchInputMyPlaylist">Go to My playlists search<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg></a> 
+    <h4>Search playlist</h4>
+     <input class="searchdelete" type="text" name="search" id="searchInputPlaylist" placeholder="Search...">
+     
+     <table>
+        <tr>
+            <th>Name</th>
+            <th>Edit</th>
+        </tr> 
+        {{#each playlists}} 
+            <tr class="playlist">
+                <td><a href="detail/playlist/{{id}}"><p>{{name}}</p></a></td>
+                <td><form action="/edit/playlist/song/{{id}}" method="get"><button type="submit"><img src="assets/img/edit.svg" alt="edit"></button></form></td>
+            </tr>        
+        {{/each}}
+    </table>
+    <h4 id="searchInputMyPlaylist">My playlists</h4>
+     
+     <table>
+        <tr>
+            <th>Name</th>
+        </tr>  
+            <tr class="my-playlist">
+                <td><a href="detail/playlist/{{id}}"><p>{{myPlaylists.name}}</p></a></td>
+            </tr>        
+    </table>
+
+</main>
+<script>
+  const searchInputMyPlaylist = document.getElementById('searchInputMyPlaylist');
+  
+  searchInputMyPlaylist.addEventListener('input', function() {
+    const searchQuery = searchInputMyPlaylist.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('my-playlist');
+    console.log(searchQuery)
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+
+  const searchInputPlaylist = document.getElementById('searchInputPlaylist');
+  
+  searchInputPlaylist.addEventListener('input', function() {
+    const searchQuery = searchInputPlaylist.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('playlist');
+    console.log(searchQuery)
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+  
+</script>
+</body>
+
+
+
+
+
+
+
+
+

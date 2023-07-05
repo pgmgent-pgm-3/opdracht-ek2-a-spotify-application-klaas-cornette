@@ -1,0 +1,48 @@
+<body class="overzichtpage">
+    {{> header}}
+<main class="marginbox delete">
+
+    <h4>Search songs in {{playlists.name}} playlist</h4>
+     <input class="searchdelete" type="text" name="search" id="searchInputPlaylist" placeholder="Search...">
+     
+     <table>
+        <tr>
+            <th>Name</th>
+            <th>Delete</th>
+        </tr> 
+        {{#each playlists.song}} 
+            <tr class="playlist">
+                <td><p>{{name}}</p></td>
+                <td><form action="/playlist/song/{{id}}" method="post"><input type="text" style="display: none;" name="id" value="{{../playlists.id}}"><button type="submit"><img src="../../../assets/img/delete.svg" alt="delete" onclick="return confirm('Weet je zeker dat je dit wilt verwijderen uit de playlist?')"></button></form></td>
+            </tr>        
+        {{/each}}
+    </table>
+</main>
+<script>
+  
+  const searchInputPlaylist = document.getElementById('searchInputPlaylist');
+  searchInputPlaylist.addEventListener('input', function() {
+    const searchQuery = searchInputPlaylist.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('playlist');
+    console.log(searchQuery)
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+   
+</script>
+</body>
+
+
+
+
+
+
+
+
+

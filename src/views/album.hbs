@@ -1,0 +1,49 @@
+<body class="overzichtpage">
+    {{> header}}
+<main class="marginbox delete">    
+    <h4>Search album</h4>
+     <input class="searchdelete" type="text" name="search" id="searchInputAlbum" placeholder="Search...">
+     
+     <table>
+        <tr>
+            <th>Name</th>
+            <th>Name artist</th>
+            <th>Edit</th>
+        </tr> 
+        {{#each albums}} 
+            <tr class="album">
+                <td><p>{{name}}</p></a></td>
+                <td><p>{{artist.name}}</p></td>
+                <td><form action="/edit/album/artist/{{id}}" method="get"><button type="submit"><img src="assets/img/edit.svg" alt="edit"></button></form></td>
+            </tr>        
+        {{/each}}
+    </table>
+</main>
+<script>
+  const searchInputSong = document.getElementById('searchInputAlbum');
+  
+  searchInputAlbum.addEventListener('input', function() {
+    const searchQuery = searchInputAlbum.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('album');
+    console.log(searchQuery)
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+  
+</script>
+</body>
+
+
+
+
+
+
+
+
+

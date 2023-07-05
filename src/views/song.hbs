@@ -1,0 +1,47 @@
+<body class="overzichtpage">
+    {{> header}}
+<main class="marginbox delete">    
+    <h4>Search song</h4>
+     <input class="searchdelete" type="text" name="search" id="searchInputSong" placeholder="Search...">
+     
+     <table>
+        <tr>
+            <th>Name</th>
+            <th>Name artist</th>
+        </tr> 
+        {{#each songs}} 
+            <tr class="song">
+                <td><p>{{name}}</p></td>
+                <td><p>{{artist.name}}</p></td>
+            </tr>        
+        {{/each}}
+    </table>
+</main>
+<script>
+  const searchInputSong = document.getElementById('searchInputSong');
+  
+  searchInputSong.addEventListener('input', function() {
+    const searchQuery = searchInputSong.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('song');
+    console.log(searchQuery)
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+  
+</script>
+</body>
+
+
+
+
+
+
+
+
+

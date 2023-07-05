@@ -1,0 +1,180 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  padding-left: 5rem;
+}
+
+tr:nth-child(even) {
+  background-color: #A8FFC7;
+}
+
+th {
+  background-color: #1DB954;
+  color: white;
+  font-size: 2rem;
+  padding: 1.5rem;
+  padding-left: 5rem;
+  
+}
+
+td {
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.overzichtpage h2 {
+    color: black;
+    font-size: 2.5rem;
+    padding: 1rem;
+    margin-bottom: 0;
+}
+
+.overzichtpage h3 {
+  color: black;
+  font-size: 2.8rem;
+  margin-top: 8rem;
+  margin-bottom: 0;
+}
+
+.overzichtpage h1 {
+  color: black;
+  font-size: 2.8rem;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.title__kabel h2 {
+    margin: 0;
+}
+
+.title__kabel {
+  display: flex;
+  flex-direction: row;
+}
+
+.overzichtpage input {
+    display: block;   
+    width: 30rem;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+}
+
+.navigator {
+    font-size: 2rem;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    height: 2rem;
+    gap: 1rem;
+    padding: 1.5rem;
+    padding-top: 2rem;
+    padding-bottom: 0;
+    margin-top: 2rem;
+}
+
+.navigator:hover {
+    color: #1DB954;
+}
+
+.navigator svg {
+  transform: translateY(0.4rem) scale(1.7);
+}
+
+.navigator:hover svg {
+  fill: #1DB954;
+}
+
+.marginbox {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.row button {
+  width: 10rem;
+  height: 3rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 1rem;
+  background-color: #A8FFC7;
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
+
+.row button:hover {
+  background-color: #1DB954;
+  color: white;
+}
+
+.overzichtpage label {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+}
+
+.overzichtpage form {
+  margin-top: 4rem;
+}
+
+.delete form {
+  margin: 0;
+}
+
+.overzichtpage h4 {
+  color: black;
+  font-size: 2.8rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.searchdelete {
+  margin-bottom: 3rem; 
+}
+
+.inline {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.playlist a {
+  text-decoration: none;
+  color: black;
+}
+
+.playlist a:hover {
+  color: #1DB954;
+}
+
+.artist a {
+  text-decoration: none;
+  color: black;
+}
+
+.artist a:hover {
+  color: #1DB954;
+}
+
+.my-playlist a {
+  text-decoration: none;
+  color: black;
+}
+
+.my-playlist a:hover {
+  color: #1DB954;
+}

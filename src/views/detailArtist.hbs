@@ -1,0 +1,53 @@
+<body class="overzichtpage">
+    {{> header}}
+<main class="marginbox delete">    
+    <h4>Artist : {{artist.name}}</h4>
+     
+     <table>
+        <tr>
+            <th>Songs</th>
+        </tr> 
+            <tr class="artist">
+                <td><p>{{artist.song.name}}</p></td>
+            </tr>        
+    </table>
+
+    <table>
+        <tr>
+            <th>Albums</th>
+        </tr> 
+        {{#each artist.album}} 
+            <tr class="artist">
+                <td><p>{{name}}</p></td>
+            </tr>        
+        {{/each}}
+    </table>
+</main>
+<script>
+  const searchInputSong = document.getElementById('searchInputArtist');
+  
+  searchInputArtist.addEventListener('input', function() {
+    const searchQuery = searchInputArtist.value.toLowerCase();
+    const connectorRows = document.getElementsByClassName('artist');
+    console.log(searchQuery)
+    for (let i = 0; i < connectorRows.length; i++) {
+      const connectorName = connectorRows[i].getElementsByTagName('p')[0].textContent.toLowerCase();
+      if (connectorName.includes(searchQuery)) {
+        connectorRows[i].style.display = 'table-row';
+      } else {
+        connectorRows[i].style.display = 'none';
+      }
+    }
+  });
+  
+</script>
+</body>
+
+
+
+
+
+
+
+
+

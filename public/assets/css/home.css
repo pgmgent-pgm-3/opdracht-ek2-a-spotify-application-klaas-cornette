@@ -1,0 +1,106 @@
+.center {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.toevoegen a {
+    display: flex;
+    justify-content: center;
+    padding-top: 10rem;
+}
+
+.overzicht a {
+    display: flex;
+    justify-content: center;
+    padding-top: 10rem;
+}
+
+.toevoegen img:hover {
+    transform: scale(0.95);
+}
+
+.overzicht img:hover {
+    transform: scale(0.95);
+}
+
+.toevoegen img {
+    width: 60%;
+    transition: transform 0.3s ease-in-out;
+}
+.overzicht img {
+    width: 60%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.player ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.player li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 10rem;
+    margin: 0;
+}
+
+.player li:nth-child(even){
+    background-color: #A8FFC7;
+}
+
+.player button {
+    border: none;
+    background-color: transparent;
+}
+
+.player a {
+    color: #191414;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.player a:hover {
+    color: #096E2C;
+}
+
+.player img {
+    width: 3rem;
+}
+
+#startbutton {
+    font-size: 2rem;
+    background-color: #A8FFC7;
+    padding: 0.8rem 2rem;
+    border: solid #191414 2px;
+    border-radius: 0.8rem;
+}
+
+#startbuttonPlaylist {
+    font-size: 2rem;
+    background-color: #A8FFC7;
+    padding: 0.8rem 2rem;
+    border: solid #191414 2px;
+    border-radius: 0.8rem;
+}
+
+.buttonrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 5rem;
+}
+
+.player h1 {
+    margin-left: 10rem;
+    font-size: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.player {
+    padding-bottom: 5rem;
+}

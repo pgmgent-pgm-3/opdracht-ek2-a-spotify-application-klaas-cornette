@@ -1,0 +1,22 @@
+<header class="head-box">
+    <div class="head-space">
+        <div class="logo__head">
+            <img src="/assets/img/logo.png" alt="logo">
+        </div>
+        <div class="nav__head">
+            <a href="/">Home</a>
+            <a href="/song">Songs</a>
+            <a href="/artist">Artists</a>
+            <a href="/album">Albums</a>
+            <a href="/playlist">Playlist</a>
+            <a href="/add">Add</a>
+            <a href="/edit">Edit</a>
+            <form method="POST" action="/user"><button class="button" type="submit">Update user</button></form> 
+            <form method="POST" action="/logout"><button class="button" type="submit">Log out</button></form>
+            {{#if meta}}
+                <img class="avatar" src="{{meta.avatar}}" alt="avatar"> 
+            {{/if}} 
+            
+        </div>
+    </div>
+</header>

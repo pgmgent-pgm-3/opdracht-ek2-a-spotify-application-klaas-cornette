@@ -1,0 +1,62 @@
+
+
+.form-container {
+    margin: 5rem;
+    display: flex;
+    gap: 10rem;
+    flex-wrap: wrap;
+    
+}
+
+.make {
+    width: 30rem;
+    height: fit-content;
+    margin: 3rem auto;
+    padding: 5rem;
+    background-color: #A8FFC7;
+    border-radius: 2rem;
+    height: 41rem;
+}
+
+.make h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+  
+.make label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.make input[type="text"],
+.make input[type="number"] {
+  width: 95%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border-width: 2px;
+}
+
+.make input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  background-color: #1DB954;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.make input[type="submit"]:hover {
+  background-color: #096E2C;
+}
+
+.head-space form {
+  margin: 0;
+}

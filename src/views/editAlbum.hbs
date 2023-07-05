@@ -1,0 +1,22 @@
+<body class="add">
+<main>
+    {{> header}}
+
+<div class="form-container">
+
+    <form method="POST" action="/api/update/album" class="make">
+        <h2>Edit album</h2>
+
+        <label for="naam_add_song">Name album:</label>
+        <input type="text" id="naam_add_album" name="naam" required><br><br>
+        <input value="{{id.id}}" style="display: none;" name="id" id="id">
+
+        <input type="submit" value="toevoegen">
+    </form>
+
+
+</div>
+    
+</main>
+</body>
+
