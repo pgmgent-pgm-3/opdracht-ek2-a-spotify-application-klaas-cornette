@@ -13,16 +13,15 @@ export default new EntitySchema({
     name: {
       type: 'varchar',
     },
-    
   },
   relations: {
     user: {
-      target: "User",
-      type: "one-to-one",
+      target: 'User',
+      type: 'one-to-one',
       joinColumn: {
-        name: "user_id",
+        name: 'user_id',
       },
-      onDelete: "CASCADE",
+      onDelete: 'CASCADE',
     },
     song: {
       type: 'many-to-many',
@@ -30,9 +29,7 @@ export default new EntitySchema({
       joinTable: {
         name: 'playlists_has_songs',
         joinColumns: [{ name: 'id_playlist', referencedColumnName: 'id' }],
-        inverseJoinColumns: [
-          { name: 'id_song', referencedColumnName: 'id' },
-        ],
+        inverseJoinColumns: [{ name: 'id_song', referencedColumnName: 'id' }],
       },
     },
   },

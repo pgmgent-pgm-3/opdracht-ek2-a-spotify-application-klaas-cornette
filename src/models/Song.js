@@ -13,16 +13,15 @@ export default new EntitySchema({
     name: {
       type: 'varchar',
     },
-    
   },
   relations: {
     artist: {
-      target: "Artist",
-      type: "one-to-one",
+      target: 'Artist',
+      type: 'one-to-one',
       joinColumn: {
-        name: "artist_id",
+        name: 'artist_id',
       },
-      onDelete: "CASCADE",
+      onDelete: 'CASCADE',
     },
     playlist: {
       type: 'many-to-many',

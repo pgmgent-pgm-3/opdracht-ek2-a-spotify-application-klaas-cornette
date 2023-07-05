@@ -12,5 +12,4 @@ export default {
   ...song,
   ...user,
   ...Usermeta,
- 
 };

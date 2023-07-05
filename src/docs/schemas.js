@@ -13,7 +13,6 @@ export default {
       playlist: {
         $ref: '#/components/schemas/Playlist',
       },
-      
     },
   },
   UserMeta: {
@@ -52,7 +51,7 @@ export default {
   Playlist: {
     properties: {
       id: { type: 'number' },
-      name: { type: 'string' }, 
+      name: { type: 'string' },
       user: {
         $ref: '#/components/schemas/User',
       },

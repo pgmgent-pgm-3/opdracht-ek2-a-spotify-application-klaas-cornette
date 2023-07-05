@@ -48,12 +48,12 @@ export const postArtist = async (req, res, next) => {
     const artistRepo = DataSource.getRepository('Artist');
     const postArtist = {
       name: req.body.naam,
-    }
+    };
     const artist = await artistRepo.save(postArtist);
     res.status(201).send({
       status: 'Inserted with succses.',
       id: artist.id,
-  });
+    });
     return next();
   } catch (e) {
     res.status(500).json({
@@ -65,8 +65,8 @@ export const postArtist = async (req, res, next) => {
 export const updateArtist = async (req, res) => {
   try {
     const artistRepo = DataSource.getRepository('Artist');
-    const id  = req.body.id;
-    const artist = await artistRepo.findOneBy({ id: id });
+    const { id } = req.body;
+    const artist = await artistRepo.findOneBy({ id });
     let update;
     update = {
       name: req.body.naam,
@@ -79,7 +79,6 @@ export const updateArtist = async (req, res) => {
     res.status(201).json({
       status: 'Inserted with succses.',
     });
-    
   } catch (e) {
     res.status(500).json({
       status: e.message,

@@ -137,7 +137,7 @@ export const postRegister = async (req, res, next) => {
         lable: req.body.role,
       },
     });
-    let userExists = await userRepo.findOne({
+    const userExists = await userRepo.findOne({
       where: {
         email: req.body.email,
       },
@@ -160,9 +160,9 @@ export const postRegister = async (req, res, next) => {
       },
       role: {
         id: role.id,
-      }
+      },
     });
-    console.log(user)
+    console.log(user);
     // save the user
     await userRepo.save(user);
     res.redirect('/login');
@@ -190,25 +190,25 @@ export const postLogin = async (req, res, next) => {
     }
     // get the user
     const userRepo = await DataSource.getRepository('User');
-    
+
     // change email to lowercase letters
     const lwEmail = req.body.email.toLowerCase();
     let user;
     // get a user with a specific email adress
     // we moeten nog knop maken voor of het leerkracht is of student
-    
+
     user = await userRepo.findOne({
       where: {
-        email: lwEmail, 
+        email: lwEmail,
       },
-      relations: ['role','meta'],
-      });
+      relations: ['role', 'meta'],
+    });
     // authentication validation
     if (!user) {
       req.formErrors = [{ message: 'Gebruiker bestaat niet.' }];
       return next();
     }
-    const role = user.role.lable
+    const role = user.role.lable;
     // compare hashed password with saved hashed password
     const givenPassword = req.body.password; // supersecret
     const dbPassword = user.password; // $2b$10$9sWBzAraG2EQHZs62uyVdeH2dJxDAM4aWwlcNKWHAX.m2ZUjneEQa
@@ -221,7 +221,7 @@ export const postLogin = async (req, res, next) => {
     }
     // create the JWT web token, aka our identity card
     const token = jwt.sign(
-      { id: user.id, email: req.body.email, role},
+      { id: user.id, email: req.body.email, role },
       process.env.TOKEN_SALT,
       { expiresIn: '1h' }
     );

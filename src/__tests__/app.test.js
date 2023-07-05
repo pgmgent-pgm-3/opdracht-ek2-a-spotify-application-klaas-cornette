@@ -26,8 +26,8 @@ describe('API test', () => {
     server.close();
   });
   describe('Testing HTTP methods', () => {
-    const songRepo = DataSource.getRepository('Song')
-    const artistRepo = DataSource.getRepository('Artist')
+    const songRepo = DataSource.getRepository('Song');
+    const artistRepo = DataSource.getRepository('Artist');
     test('GET - /test/api/song', async () => {
       const response = await request(app).get('/test/api/song');
       expect(response.statusCode).toBe(201);
@@ -41,8 +41,8 @@ describe('API test', () => {
 
     test('PUT - /test/api/song', async () => {
       const song = songRepo.findOne({
-        where: {id: 4}
-      })
+        where: { id: 4 },
+      });
       const update = {
         ...song,
         name: 'updateTest',
@@ -50,7 +50,7 @@ describe('API test', () => {
       const response = await request(app).put('/test/api/song').send(update);
       expect(response.status).toBe(201);
     });
-    
+
     test('GET - /test/api/artist', async () => {
       const response = await request(app).get('/test/api/artist');
       expect(response.statusCode).toBe(201);
@@ -64,8 +64,8 @@ describe('API test', () => {
 
     test('PUT - /test/api/artist', async () => {
       const artist = artistRepo.findOne({
-        where: {id: 2}
-      })
+        where: { id: 2 },
+      });
       const update = {
         ...artist,
         name: 'updateTest',
@@ -95,9 +95,5 @@ describe('API test', () => {
       const response = await request(app).get('/test/api/playlist/1');
       expect(response.statusCode).toBe(201);
     });
-    
-    
-
-
   });
 });

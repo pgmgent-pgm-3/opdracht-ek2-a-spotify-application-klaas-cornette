@@ -46,21 +46,21 @@ export const deleteAlbum = async (req, res) => {
 export const postAlbum = async (req, res) => {
   try {
     const albumRepo = DataSource.getRepository('Album');
-    const artistRepo = DataSource.getRepository('Artist')
-    const artist = await artistRepo.findOne({ 
-      where: {name: req.body.artist_naam}
-     });
-     if(!artist){
+    const artistRepo = DataSource.getRepository('Artist');
+    const artist = await artistRepo.findOne({
+      where: { name: req.body.artist_naam },
+    });
+    if (!artist) {
       res.status(200).send('The artist does not excist');
-        return next();
-     }
-     
+      return next();
+    }
+
     const postAlbum = {
       name: req.body.naam,
       artist: {
-        id: artist.id
-      }
-    }
+        id: artist.id,
+      },
+    };
     const album = await albumRepo.save(postAlbum);
     res.status(201).json({
       status: 'Inserted with succses.',
@@ -76,8 +76,8 @@ export const postAlbum = async (req, res) => {
 export const updateAlbum = async (req, res) => {
   try {
     const albumRepo = DataSource.getRepository('Album');
-    const id  = req.body.id;
-    const album = await albumRepo.findOneBy({ id: id });
+    const { id } = req.body;
+    const album = await albumRepo.findOneBy({ id });
     let update;
     update = {
       name: req.body.naam,

@@ -1,40 +1,40 @@
-import typeorm from "typeorm";
+import typeorm from 'typeorm';
 
 const { EntitySchema } = typeorm;
 export default new EntitySchema({
-  name: "User",
-  tableName: "users",
+  name: 'User',
+  tableName: 'users',
   columns: {
     id: {
       primary: true,
-      type: "int",
+      type: 'int',
       generated: true,
     },
     email: {
-      type: "varchar",
+      type: 'varchar',
     },
     password: {
-      type: "varchar",
+      type: 'varchar',
     },
   },
   relations: {
     meta: {
-      target: "UserMeta",
-      type: "one-to-one",
+      target: 'UserMeta',
+      type: 'one-to-one',
       cascade: true,
-      inverseSide: "user",
+      inverseSide: 'user',
     },
     role: {
-      target: "Role",
-      type: "many-to-one",
+      target: 'Role',
+      type: 'many-to-one',
       cascade: true,
-      inverseSide: "users",
+      inverseSide: 'users',
     },
     playlist: {
-      target: "Playlist",
-      type: "one-to-one",
+      target: 'Playlist',
+      type: 'one-to-one',
       cascade: true,
-      inverseSide: "user",
+      inverseSide: 'user',
     },
   },
 });

@@ -46,21 +46,21 @@ export const deleteSong = async (req, res) => {
 export const postSong = async (req, res, next) => {
   try {
     const songRepo = DataSource.getRepository('Song');
-    const artistRepo = DataSource.getRepository('Artist')
-    const artist = await artistRepo.findOne({ 
-      where: {name: req.body.artist_naam}
-     });
-     if(!artist){
+    const artistRepo = DataSource.getRepository('Artist');
+    const artist = await artistRepo.findOne({
+      where: { name: req.body.artist_naam },
+    });
+    if (!artist) {
       res.status(200).send('The artist does not excist');
-        return next();
-     }
-     
+      return next();
+    }
+
     const postSong = {
       name: req.body.naam,
       artist: {
-        id: artist.id
-      }
-    }
+        id: artist.id,
+      },
+    };
     const song = await songRepo.save(postSong);
     res.status(201).json({
       status: 'Inserted with succses.',
@@ -76,8 +76,8 @@ export const postSong = async (req, res, next) => {
 export const updateSong = async (req, res) => {
   try {
     const songRepo = DataSource.getRepository('Song');
-    const id = req.body.id;
-    const song = await songRepo.findOneBy({ id: id });
+    const { id } = req.body;
+    const song = await songRepo.findOneBy({ id });
     let update;
     update = {
       name: req.body.naam,

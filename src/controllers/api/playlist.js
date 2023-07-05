@@ -49,9 +49,9 @@ export const postPlaylist = async (req, res) => {
     const postPlaylist = {
       name: req.body.naam,
       user: {
-        id: req.user.id
-      }
-    }
+        id: req.user.id,
+      },
+    };
     const playlist = await playlistRepo.save(postPlaylist);
     res.status(201).json({
       status: 'Inserted with succses.',
@@ -65,49 +65,50 @@ export const postPlaylist = async (req, res) => {
 };
 
 export const addSongToPlaylist = async (req, res) => {
-  try{
+  try {
     const playlistRepo = DataSource.getRepository('Playlist');
     const songRepo = DataSource.getRepository('Song');
-    const playlistCheck = await playlistRepo.findOne({ 
-      where: {name: req.body.naam},
-      relations: ['song']
-     });
-     if(!playlistCheck){
+    const playlistCheck = await playlistRepo.findOne({
+      where: { name: req.body.naam },
+      relations: ['song'],
+    });
+    if (!playlistCheck) {
       res.status(200).send('The playlist does not excist');
-        return next();
-     }
-     const song = await songRepo.findOne({ 
-      where: {name: req.body.songnaam}
-     });
-     if(!song){
+      return next();
+    }
+    const song = await songRepo.findOne({
+      where: { name: req.body.songnaam },
+    });
+    if (!song) {
       res.status(200).send('The song does not excist');
-        return next();
-     }
+      return next();
+    }
     const postPlaylist = {
       ...playlistCheck,
       song: [
         ...playlistCheck.song,
         {
-          id: song.id
-        }]
+          id: song.id,
+        },
+      ],
     };
     const playlist = await playlistRepo.save(postPlaylist);
     res.status(201).json({
       status: 'Inserted with succses.',
       id: playlist.id,
     });
-  }catch(e){
+  } catch (e) {
     res.status(500).json({
       status: e.message,
     });
   }
-}
+};
 
 export const updatePlaylist = async (req, res) => {
   try {
     const playlistRepo = DataSource.getRepository('Playlist');
-    const id = req.body.id;
-    const playlist = await playlistRepo.findOneBy({ id: id });
+    const { id } = req.body;
+    const playlist = await playlistRepo.findOneBy({ id });
     let update;
     update = {
       name: req.body.naam,
@@ -132,11 +133,11 @@ export const getMyPlaylist = async (req, res) => {
     const userRepo = DataSource.getRepository('User');
     const { userId } = req.params;
     const user = await userRepo.findOne({
-      where: {id: userId},
-      relations: ['playlist']
+      where: { id: userId },
+      relations: ['playlist'],
     });
-    console.log(userId)
-    const playlist = user.playlist
+    console.log(userId);
+    const { playlist } = user;
     res.status(201).json(playlist);
   } catch (e) {
     res.status(500).json({

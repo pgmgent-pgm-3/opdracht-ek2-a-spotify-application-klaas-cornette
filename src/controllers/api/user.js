@@ -47,11 +47,11 @@ export const updateMeta = async (req, res, next) => {
   try {
     const { id } = req.params;
     const userRepo = DataSource.getRepository('User');
-    const user = await userRepo.findOne({ 
-      where: {id: id},
-      relations: ['meta']
-     });
-     
+    const user = await userRepo.findOne({
+      where: { id },
+      relations: ['meta'],
+    });
+
     const updateUser = {
       ...user,
       meta: {
@@ -59,8 +59,8 @@ export const updateMeta = async (req, res, next) => {
         lastname: req.body.lastname,
         username: req.body.username,
         avatar: req.body.avatar,
-      }
-    }
+      },
+    };
     const userMeta = await userRepo.save(updateUser);
     res.status(201).json({
       status: 'Inserted with succses.',

@@ -13,14 +13,13 @@ export default new EntitySchema({
     name: {
       type: 'varchar',
     },
-    
   },
   relations: {
     artist: {
       target: 'Artist',
       type: 'many-to-one',
-      inverseSide: "album",
-      onDelete: "CASCADE",
+      inverseSide: 'album',
+      onDelete: 'CASCADE',
     },
   },
 });

@@ -32,14 +32,14 @@ export const makeUser = async (req, res, next) => {
       email,
       password: hashedPassword,
       meta: {
-        firstname: firstname,
-        lastname: lastname,
-        username: username,
+        firstname,
+        lastname,
+        username,
         avatar: faker.internet.avatar(),
       },
       role: {
         id: 1,
-      }
+      },
     });
     await userRepo.save(user);
   }

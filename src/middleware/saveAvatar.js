@@ -42,15 +42,15 @@ export const saveAvatar = async (req, res, next) => {
     // save new avatar url to databse
     // /assets/imgAvatar/${uniqueFileName}
     const currentUser = req.user;
-    const id = currentUser.meta.id;
+    const { id } = currentUser.meta;
     const metaRepo = await DataSource.getRepository('UserMeta');
-    const user = await metaRepo.findOne({ 
-      where: {id: id},
+    const user = await metaRepo.findOne({
+      where: { id },
     });
     await metaRepo.save({
       ...currentUser.meta,
-      avatar: filePath
-    })
+      avatar: filePath,
+    });
 
     console.log('user is:', user);
   } else {

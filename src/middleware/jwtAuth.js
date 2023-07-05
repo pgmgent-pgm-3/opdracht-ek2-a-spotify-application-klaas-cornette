@@ -15,10 +15,10 @@ export const jwtAuth = async (req, res, next) => {
     const { role } = jwt.verify(token, process.env.TOKEN_SALT);
 
     const userRepository = DataSource.getRepository('User');
-    
+
     const user = await userRepository.findOne({
       where: { id },
-      relations: ['meta', 'role']
+      relations: ['meta', 'role'],
     });
 
     // remove the password from the user object
@@ -43,22 +43,22 @@ export const jwtAuthAdmin = async (req, res, next) => {
     const { role } = jwt.verify(token, process.env.TOKEN_SALT);
 
     const userRepository = DataSource.getRepository('User');
-    
+
     const user = await userRepository.findOne({
       where: { id },
-      relations: ['meta', 'role']
+      relations: ['meta', 'role'],
     });
     user.password = '';
 
     req.user = user;
-    if(user.role.lable != 'admin'){
+    if (user.role.lable != 'admin') {
       return res.status(403).json({ message: 'You do not have permission!' });
-    } else{
-      next();
     }
+    next();
+
     // go to next chain
   } catch (e) {
-    console.log(e)
+    console.log(e);
     res.clearCookie('token');
     return res.redirect('/login');
   }
@@ -73,23 +73,22 @@ export const jwtAuthEditor = async (req, res, next) => {
     const { role } = jwt.verify(token, process.env.TOKEN_SALT);
 
     const userRepository = DataSource.getRepository('User');
-    
+
     const user = await userRepository.findOne({
       where: { id },
-      relations: ['meta', 'role']
+      relations: ['meta', 'role'],
     });
-    console.log(user.role.lable)
-    
+    console.log(user.role.lable);
 
     // remove the password from the user object
     user.password = '';
 
     req.user = user;
-    if(user.role.lable != "admin" && user.role.lable != "editor"){
+    if (user.role.lable != 'admin' && user.role.lable != 'editor') {
       return res.status(403).json({ message: 'You do not have permission!' });
-    }else {
-      next();
     }
+    next();
+
     // go to next chain
   } catch (e) {
     res.clearCookie('token');

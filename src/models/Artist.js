@@ -13,7 +13,6 @@ export default new EntitySchema({
     name: {
       type: 'varchar',
     },
-    
   },
   relations: {
     album: {
@@ -24,10 +23,10 @@ export default new EntitySchema({
       inverseSide: 'artist',
     },
     song: {
-      target: "Song",
-      type: "one-to-one",
+      target: 'Song',
+      type: 'one-to-one',
       cascade: true,
-      inverseSide: "artist",
+      inverseSide: 'artist',
     },
   },
 });

@@ -1,4 +1,3 @@
 export const add = async (req, res) => {
-    res.render('add', {
-    });
+  res.render('add', {});
 };
