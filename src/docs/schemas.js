@@ -5,7 +5,7 @@ export default {
       email: { type: 'string' },
       password: { type: 'string' },
       meta: {
-        $ref: '#/components/schemas/Usermeta',
+        $ref: '#/components/schemas/UserMeta',
       },
       role: {
         $ref: '#/components/schemas/Role',

@@ -5,18 +5,18 @@ export default {
     summary: 'Get all usermeta',
     description: 'Get all usermeta in the database',
     get: {
-      tags: ['Usermeta'],
+      tags: ['UserMeta'],
       summary: 'Get all usermeta',
       responses: usermetaResponse,
     },
     post: {
-      tags: ['Usermeta'],
+      tags: ['UserMeta'],
       summary: 'create a new usermeta',
       requestBody: {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/components/schemas/Usermeta',
+              $ref: '#/components/schemas/UserMeta',
             },
           },
         },
@@ -31,7 +31,7 @@ export default {
     summary: 'Get one usermeta with given id',
     description: 'Get one usermeta with given id',
     get: {
-      tags: ['Usermeta'],
+      tags: ['UserMeta'],
       summary: 'Get one usermeta with given id',
       parameters: [
         {
@@ -48,7 +48,7 @@ export default {
       responses: usermetaResponse,
     },
     delete: {
-      tags: ['Usermeta'],
+      tags: ['UserMeta'],
       summary: 'Delete a usermeta with id',
       parameters: [
         {
