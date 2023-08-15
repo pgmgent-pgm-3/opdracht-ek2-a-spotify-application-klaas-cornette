@@ -1,16 +1,11 @@
-<div class="input-img">
-<div class="background-img">
-  <div class="background"></div>
-  <img src="/assets/img/person.png" alt="">
-</div>
 <section class="auth-container login">
-  <img class="logo-login" src="/assets/img/logo-atwork2-removebg1.png" alt="logo">
   <div class="login__text">  
   <h1>Welkom</h1>
-  <p>Meld u aan om verder te gaan</p>
+  <a href="/register">Register</a>
   </div>
   {{>form-errors this}}
-  <form method="post" action="login">
+  <form method="post" action="login" class="make">
+  <p>Meld u aan om verder te gaan</p>
     {{#each inputs}}
       {{>form-input this}}
     {{/each}}
@@ -21,15 +16,7 @@
       </label>
       <a href="mailto: admin@bernardusokan.com">wachtwoord vergeten?</a>
     </div>
-    <div class="footer-container">
-      <button  type="submit" class="btn-primary" value="Login"> Login</button>
-      <p>Of login met</p>
-      <div class="microsoft-login">
-<button type="submit" class="microsoft-btn" value="Login">
-  <img src="/assets/img/windowslogo.png" alt="">
-  Login met Microsoft</button>
-      </div>
-    </div>
+      <button  type="submit" class="btn-primary" value="Login"> Login</button> 
   </form>
 </section>
 </div>

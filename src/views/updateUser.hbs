@@ -1,7 +1,10 @@
 <section class="auth-container register">
-  <h4>Upsate user</h4>
+  <div class="register__text"> 
+    <h4>Upsate user</h4>
+  </div>
   {{>form-errors this}}
-  <form method="post" name:"role" >
+  {{> upload-file}}
+  <form method="post" name:"role" class="make">
     {{#each inputs}}
       {{>form-input this}}
     {{/each}}
@@ -10,5 +13,5 @@
       <input type="submit" class="btn btn-primary" value="Update">
     </div>
   </form>
-  {{> upload-file}}
+  
 </section>

@@ -16,7 +16,10 @@ export const home = async (req, res) => {
 
   const songRepo = await DataSource.getRepository('Song');
   const song = await songRepo.find({});
-  const playlist_id = user.playlist.id;
+  let playlist_id;
+  if(user.playlist){
+    playlist_id = user.playlist.id;
+  }
   const playlistRepo = await DataSource.getRepository('Playlist');
   const playlist = await playlistRepo.findOne({
     where: { id: playlist_id },

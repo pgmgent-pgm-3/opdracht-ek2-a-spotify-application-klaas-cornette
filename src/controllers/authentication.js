@@ -82,7 +82,6 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   // errors
-  const { formErrors } = req;
   const val = validationResult(req);
   const helperError = (errors) =>
     val.errors.find((error) => error.path === errors)?.msg ?? null;
@@ -109,7 +108,6 @@ export const login = async (req, res) => {
     layout: 'authentication',
     // toevoegen van data aan de view
     inputs,
-    formErrors,
   });
 };
 
@@ -173,19 +171,12 @@ export const postRegister = async (req, res, next) => {
 
 export const postLogin = async (req, res, next) => {
   try {
-    const errors = validationResult(req);
+    const error = validationResult(req);
+    
     // if we have validation errors
-    if (!errors.isEmpty()) {
-      console.log('er is iets mis');
+    if (!error.isEmpty()) {
       // create an object with the error fields
-      const errorFields = {};
-      // iterate over the errors
-      errors.array().forEach((error) => {
-        errorFields[error.param] = error.msg;
-      });
-      // put the errorfields in the current request
-      req.formErrorFields = errorFields;
-
+      req.validationError = error;
       return next();
     }
     // get the user
@@ -193,11 +184,11 @@ export const postLogin = async (req, res, next) => {
 
     // change email to lowercase letters
     const lwEmail = req.body.email.toLowerCase();
-    let user;
+    
     // get a user with a specific email adress
     // we moeten nog knop maken voor of het leerkracht is of student
 
-    user = await userRepo.findOne({
+    const user = await userRepo.findOne({
       where: {
         email: lwEmail,
       },

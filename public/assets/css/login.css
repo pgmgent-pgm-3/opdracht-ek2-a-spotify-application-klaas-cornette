@@ -1,0 +1,171 @@
+body {
+    background-color: #f6f6f6;
+}
+
+.register__text h4 {
+    color: #096E2C;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.register__text p {
+    text-align: center;
+}
+
+.register__text a {
+    text-decoration: none;
+    font-size: 2rem;
+    color: #191414;
+}
+
+.register__text a:hover {
+    color: #096E2C;
+}
+
+.login__text h1 {
+    color: #096E2C;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.login__text a {
+    text-decoration: none;
+    font-size: 2rem;
+    color: #191414;
+}
+
+.login__text a:hover {
+    color: #096E2C;
+}
+
+.make p {
+    font-size: 2rem;
+    color: #191414;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.make {
+    width: 30rem;
+    height: fit-content;
+    margin: 1rem auto;
+    padding: 5rem;
+    background-color: #A8FFC7;
+    border-radius: 2rem;
+}
+
+.auth-container .make {
+    width: 35rem;
+}
+
+.register .make {
+    width: 40rem;
+}
+
+.make h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+  
+.make label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.make input[type="text"],
+.make input[type="number"],
+.make input[type="password"] {
+  width: 95%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border-width: 2px;
+}
+
+.make select {
+    width: 95%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    border-width: 2px;
+    margin-top: 1rem;
+  }
+
+.make input[type="reset"] {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    background-color: #e23636;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.make input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  background-color: #1DB954;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.make button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.make button {
+    background-color: #096E2C;
+}
+
+.make input[type="submit"]:hover {
+  background-color: #096E2C;
+}
+
+.make input[type="reset"]:hover {
+    background-color: #a43131;
+}
+
+.remember-forgot a {
+    font-size: 1.5rem;
+    color: #e23636;
+    text-decoration: none;
+}
+
+.login__text a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    color: #e23636;
+    font-size: 1.2rem;
+}
+
+.make span:hover {
+    color: #1DB954;
+}
